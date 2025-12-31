@@ -1,0 +1,30 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build Dragon ROM",
+      "type": "shell",
+      "command": "make",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Hello1",
+      "type": "shell",
+      "command": "echo Hello1",
+      "problemMatcher": []
+    },
+    {
+      "label": "Hello2",
+      "type": "shell",
+      "command": "echo Hello2",
+      "problemMatcher": []
+    }
+  ]
+}

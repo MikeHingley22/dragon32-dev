@@ -1,0 +1,54 @@
+{
+  "name": "dragon32-dev",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".",
+    "args": {
+      // Optional: pin XRoar version (or leave as "master")
+      "XROAR_COMMIT": "master"
+    }
+  },
+
+  // Ensure the container inherits WSL's DISPLAY value
+  "containerEnv": {
+    "DISPLAY": "${localEnv:DISPLAY}"
+  },
+
+  // Ensure VS Code's remote server also inherits DISPLAY
+  "remoteEnv": {
+    "DISPLAY": "${localEnv:DISPLAY}"
+  },
+
+  // Ensure Docker passes DISPLAY and mounts the X11 socket
+  "runArgs": [
+    "--env", "DISPLAY=${localEnv:DISPLAY}",
+    "--volume", "/tmp/.X11-unix:/tmp/.X11-unix",
+    "--volume", "${localWorkspaceFolder}:/home/dev/workspace",
+    "--volume", "${localWorkspaceFolder}/roms:/home/dev/roms",
+    "--volume", "${localWorkspaceFolder}/xroar.conf:/home/dev/.xroar/xroar.conf"
+  ],
+
+  // Recommended VS Code extensions for your workflow
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-vscode.makefile-tools",
+        "ms-python.python",
+        "ms-python.vscode-pylance"
+      ]
+    }
+  },
+  "mounts": [
+    "source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,consistency=cached",
+    "source=${localEnv:HOME}/.ssh/id_rsa,target=/home/vscode/.ssh/id_rsa,type=bind,consistency=cached"
+  ],
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {}
+  },
+  // Start in the workspace folder
+  "workspaceFolder": "/home/dev/workspace",
+
+  // Use the dev user created in the Dockerfile
+  "remoteUser": "dev"
+}
