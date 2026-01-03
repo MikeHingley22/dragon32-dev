@@ -2,6 +2,7 @@
 
 This project demonstrates a simple Dragon 32 Assembly program that prints "Hello World" using a ROM cartridge image.
 
+![Screenshot](images/HelloWorld.png)
 
 ## Pre-requisites
 ### Dragon 32 Rom image
@@ -9,7 +10,7 @@ The DevContainer ships with [XRoar](https://www.6809.org.uk/xroar/) - and to use
 
 ![Screenshot](images/Capture.PNG)
 
-xroar can be launched from the command line using `xroar`
+XRoar can be launched from the command line using `xroar`
 
 
 ## Usage
