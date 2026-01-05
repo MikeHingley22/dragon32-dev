@@ -36,7 +36,17 @@
   "features": {
     "ghcr.io/devcontainers/features/github-cli:1": {
       "installDirectlyFromGitHubRelease": false
+    },
+    "ghcr.io/devcontainers/features/sshd:1": {
+      "version": "latest"
     }
+  },
+  "mounts": [
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/dev/.ssh,type=bind,readonly",
+    "source=${localEnv:SSH_AUTH_SOCK},target=/tmp/ssh-auth-sock,type=bind"
+  ],
+  "remoteEnv": {
+    "SSH_AUTH_SOCK": "/tmp/ssh-auth-sock"
   },
   "remoteUser": "dev",
   "overrideCommand": true,
