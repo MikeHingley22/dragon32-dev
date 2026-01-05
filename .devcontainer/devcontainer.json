@@ -8,24 +8,22 @@
     }
   },
   "containerEnv": {
-    "DISPLAY": "${localEnv:DISPLAY}",
-    "SSH_AUTH_SOCK": "/ssh-agent"
-  },
-  "remoteEnv": {
-    "DISPLAY": "${localEnv:DISPLAY}",
-    "SSH_AUTH_SOCK": "/ssh-agent"
+    "DISPLAY": "${localEnv:DISPLAY}"
   },
   "runArgs": [
-    "--env", "DISPLAY=${localEnv:DISPLAY}",
-    "--volume", "/tmp/.X11-unix:/tmp/.X11-unix",
-    "--volume", "${localWorkspaceFolder}/roms:/home/dev/roms",
-    "--volume", "${localWorkspaceFolder}/xroar.conf:/home/dev/.xroar/xroar.conf"
+    "--env",
+    "DISPLAY=${localEnv:DISPLAY}",
+    "--volume",
+    "/tmp/.X11-unix:/tmp/.X11-unix",
+    "--volume",
+    "${localWorkspaceFolder}/roms:/home/dev/roms",
+    "--volume",
+    "${localWorkspaceFolder}/xroar.conf:/home/dev/.xroar/xroar.conf"
   ],
   "customizations": {
     "vscode": {
       "settings": {
-        "terminal.integrated.defaultProfile.linux": "bash",
-        "git.path": "/usr/bin/git"
+        "terminal.integrated.defaultProfile.linux": "bash"
       },
       "extensions": [
         "ms-vscode.cpptools",
@@ -35,12 +33,12 @@
       ]
     }
   },
-  "mounts": [
-    "source=${env:SSH_AUTH_SOCK},target=/ssh-agent,type=bind"
-  ],
   "features": {
-    "ghcr.io/devcontainers/features/git:1": {},
-    "ghcr.io/devcontainers/features/github-cli:1": {}
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "installDirectlyFromGitHubRelease": false
+    }
   },
-  "remoteUser": "dev"
+  "remoteUser": "dev",
+  "overrideCommand": true,
+  "init": true
 }

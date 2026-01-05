@@ -32,7 +32,7 @@ FROM ubuntu:22.04
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    openssh-client ca-certificates build-essential python3 python3-pip python3-venv libgtk-3-0 libgtk-3-dev libpulse-dev libpng-dev libpulse-dev libglib2.0-0 libasound2 libsndfile1 libpng16-16 zlib1g \
+    openssh-client curl gnupg ca-certificates build-essential python3 python3-pip python3-venv libgtk-3-0 libgtk-3-dev libpulse-dev libpng-dev libpulse-dev libglib2.0-0 libasound2 libsndfile1 libpng16-16 zlib1g \
     libgl1-mesa-glx libgl1-mesa-dri mesa-utils x11-apps xauth dbus-x11 sudo \
     && rm -rf /var/lib/apt/lists/*
 
@@ -42,7 +42,6 @@ RUN useradd -m -s /bin/bash dev \
  && echo "dev ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 WORKDIR /home/dev/workspace
-USER dev
 
 SHELL ["/bin/bash", "-c"]
 
