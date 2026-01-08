@@ -8,7 +8,8 @@
     }
   },
   "containerEnv": {
-    "DISPLAY": "${localEnv:DISPLAY}"
+    "DISPLAY": "${localEnv:DISPLAY}",
+    "PULSE_SERVER": "/mnt/wslg/runtime-dir/pulse/native"
   },
   "runArgs": [
     "--env",
